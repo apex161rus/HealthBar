@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour
 {
-    private float _health = 100f;
+    private float _health = 0f;
 
     public float Health => _health;
 

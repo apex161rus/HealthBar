@@ -2,35 +2,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Player))]
-
-public class UiHealthUserInterface : MonoBehaviour
+public class UiHealthBar : MonoBehaviour
 {
     public Slider Slider;
 
-    private Player _player;
     private Coroutine _coroutine;
     private float _target;
     private float _maxHealth = 100f;
 
-    public void InflictDamage()
+    private void Start()
+    {
+        Slider.maxValue = _maxHealth;
+        Slider.value = 100f;
+        _target = Slider.value;
+    }
+
+    public void MoveLeft()
     {
         CheckForStopAttempt(_coroutine);
         _coroutine = StartCoroutine(RenameValue(-10f));
     }
 
-    public void Treat()
+    public void MoveRight()
     {
         CheckForStopAttempt(_coroutine);
         _coroutine = StartCoroutine(RenameValue(10f));
-    }
-
-    private void Start()
-    {
-        _player = GetComponent<Player>();
-        Slider.maxValue = _maxHealth;
-        Slider.value = _player.Health;
-        _target = Slider.value;
     }
 
     private IEnumerator RenameValue(float valume)
@@ -41,7 +37,6 @@ public class UiHealthUserInterface : MonoBehaviour
         {
             float speed = 10.1f;
             Slider.value = Mathf.MoveTowards(Slider.value, _target, speed * Time.deltaTime);
-            _player.RenameHealth(Slider.value);
             yield return null;
         }
     }

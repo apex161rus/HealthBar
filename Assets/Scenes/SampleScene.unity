@@ -436,8 +436,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1520288758}
-        m_TargetAssemblyTypeName: HealthUserInterface, Assembly-CSharp
-        m_MethodName: Treat
+        m_TargetAssemblyTypeName: UIHealth, Assembly-CSharp
+        m_MethodName: Buttyn2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -647,8 +647,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1520288758}
-        m_TargetAssemblyTypeName: HealthUserInterface, Assembly-CSharp
-        m_MethodName: InflictDamage
+        m_TargetAssemblyTypeName: UIHealth, Assembly-CSharp
+        m_MethodName: Buttyn1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -950,10 +950,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1520288753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb14f5d3311df410e82011138a19e545, type: 3}
+  m_Script: {fileID: 11500000, guid: 16e35bc3fa647427aae78390cfd6f8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slider: {fileID: 1919309934}
 --- !u!114 &1520288759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,9 +962,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1520288753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6915db74401ce41b3966ed14146d9877, type: 3}
+  m_Script: {fileID: 11500000, guid: bb14f5d3311df410e82011138a19e545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Slider: {fileID: 1919309934}
 --- !u!222 &1520288761
 CanvasRenderer:
   m_ObjectHideFlags: 0
