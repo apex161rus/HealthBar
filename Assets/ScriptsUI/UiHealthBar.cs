@@ -4,39 +4,38 @@ using UnityEngine.UI;
 
 public class UiHealthBar : MonoBehaviour
 {
-    public Slider Slider;
+    [SerializeField]private Slider Slider;
+    [SerializeField] private Player _player;
 
     private Coroutine _coroutine;
-    private float _target;
-    private float _maxHealth = 100f;
 
     private void Start()
     {
-        Slider.maxValue = _maxHealth;
-        Slider.value = 100f;
-        _target = Slider.value;
+        Slider.maxValue = _player.MaxHealth;
     }
 
-    public void MoveLeft()
+    private void OnEnable()
     {
-        CheckForStopAttempt(_coroutine);
-        _coroutine = StartCoroutine(RenameValue(-10f));
+        _player.OnHealthChanged += RenameDamage;//<=================
     }
 
-    public void MoveRight()
+    private void OnDisable()
+    {
+        _player.OnHealthChanged -= RenameDamage;//<============ отписка
+    }
+
+    private void RenameDamage(float valume)
     {
         CheckForStopAttempt(_coroutine);
-        _coroutine = StartCoroutine(RenameValue(10f));
+        _coroutine = StartCoroutine(RenameValue(valume));
     }
 
     private IEnumerator RenameValue(float valume)
     {
-        _target += valume;
-
-        while (Slider.value != _target)
+        while (Slider.value != valume)
         {
-            float speed = 10.1f;
-            Slider.value = Mathf.MoveTowards(Slider.value, _target, speed * Time.deltaTime);
+            float speed = 20.0f;
+            Slider.value = Mathf.MoveTowards(Slider.value, valume, speed * Time.deltaTime);
             yield return null;
         }
     }

@@ -1,13 +1,39 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    private float _health = 0f;
+    private float _health = 100f;
+    private float _maxHealth = 100;
+    private float _minHealth = 0f;
+    public float MaxHealth => _maxHealth;
 
-    public float Health => _health;
+    public event UnityAction<float> OnHealthChanged;
 
-    public void RenameHealth(float value)
+    private void Start()
     {
-        _health = value;
+        OnHealthChanged?.Invoke(_health);
+    }
+
+    public void MakeDamageButton()
+    {
+        float damage = 10f;
+
+        if (_health > _minHealth)
+        {
+            _health -= damage;
+            OnHealthChanged?.Invoke(_health);
+        }
+    }
+
+    public void AddHealButton()
+    {
+        float treatment = 10f;
+
+        if (_health < _maxHealth)
+        {
+            _health += treatment;
+            OnHealthChanged?.Invoke(_health);
+        }
     }
 }
