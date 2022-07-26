@@ -8,32 +8,32 @@ public class Player : MonoBehaviour
     private float _minHealth = 0f;
     public float MaxHealth => _maxHealth;
 
-    public event UnityAction<float> OnHealthChanged;
+    public event UnityAction<float> HealthChanged;
 
     private void Start()
     {
-        OnHealthChanged?.Invoke(_health);
+        HealthChanged?.Invoke(_health);
     }
 
-    public void MakeDamageButton()
+    public void MakeDamage()
     {
         float damage = 10f;
 
         if (_health > _minHealth)
         {
             _health -= damage;
-            OnHealthChanged?.Invoke(_health);
+            HealthChanged?.Invoke(_health);
         }
     }
 
-    public void AddHealButton()
+    public void AddHeal()
     {
         float treatment = 10f;
 
         if (_health < _maxHealth)
         {
             _health += treatment;
-            OnHealthChanged?.Invoke(_health);
+            HealthChanged?.Invoke(_health);
         }
     }
 }

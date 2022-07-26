@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiHealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     [SerializeField]private Slider Slider;
     [SerializeField] private Player _player;
@@ -16,15 +16,15 @@ public class UiHealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.OnHealthChanged += RenameDamage;//<=================
+        _player.HealthChanged += OnRenameDamage;
     }
 
     private void OnDisable()
     {
-        _player.OnHealthChanged -= RenameDamage;//<============ отписка
+        _player.HealthChanged -= OnRenameDamage;
     }
 
-    private void RenameDamage(float valume)
+    private void OnRenameDamage(float valume)
     {
         CheckForStopAttempt(_coroutine);
         _coroutine = StartCoroutine(RenameValue(valume));
