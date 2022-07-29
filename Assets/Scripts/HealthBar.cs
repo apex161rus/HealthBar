@@ -6,6 +6,7 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider Slider;
     [SerializeField] private Player _player;
+    [SerializeField] private float _speed = 20f;
 
     private Coroutine _coroutine;
 
@@ -14,17 +15,18 @@ public class HealthBar : MonoBehaviour
         Slider.maxValue = _player.MaxHealth;
     }
 
+
     private void OnEnable()
     {
-        _player.HealthChanged += OnRenameDamage;
+        _player.ChangeHealth += OnZoroviaChanged;
     }
 
     private void OnDisable()
     {
-        _player.HealthChanged -= OnRenameDamage;
+        _player.ChangeHealth -= OnZoroviaChanged;
     }
 
-    private void OnRenameDamage(float valume)
+    private void OnZoroviaChanged(float valume)
     {
         CheckForStopAttempt(_coroutine);
         _coroutine = StartCoroutine(RenameValue(valume));
@@ -34,8 +36,7 @@ public class HealthBar : MonoBehaviour
     {
         while (Slider.value != valume)
         {
-            float speed = 20.0f;
-            Slider.value = Mathf.MoveTowards(Slider.value, valume, speed * Time.deltaTime);
+            Slider.value = Mathf.MoveTowards(Slider.value, valume, _speed * Time.deltaTime);
             yield return null;
         }
     }
