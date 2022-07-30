@@ -436,7 +436,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1520288759}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: GetTreatment
+        m_MethodName: Heal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
