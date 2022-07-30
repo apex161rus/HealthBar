@@ -13,8 +13,8 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         Slider.maxValue = _player.MaxHealth;
+        Slider.value = _player.MaxHealth;
     }
-
 
     private void OnEnable()
     {
