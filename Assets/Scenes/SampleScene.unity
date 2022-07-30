@@ -877,7 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb14f5d3311df410e82011138a19e545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slider: {fileID: 1919309934}
+  _slider: {fileID: 1919309934}
   _player: {fileID: 1520288759}
   _speed: 20
 --- !u!114 &1520288759
