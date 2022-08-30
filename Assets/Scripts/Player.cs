@@ -19,16 +19,20 @@ public class Player : MonoBehaviour
     public void TakeDamage()
     {
         float damage = 10f;
-        _health -= damage;
-        HealthChanged?.Invoke(_health);
-        _health = Mathf.Clamp(_health, _minHealth, _maxHealth);
+        if (_health > _minHealth)
+        {
+            _health = Mathf.Clamp(_health - damage, _minHealth, _maxHealth);
+            HealthChanged?.Invoke(_health);
+        }
     }
 
     public void Heal()
     {
         float treatment = 10f;
-        _health += treatment;
-        HealthChanged?.Invoke(_health);
-        _health = Mathf.Clamp(_health, _minHealth, _maxHealth);
+        if (_health < _maxHealth)
+        {
+            _health = Mathf.Clamp(_health + treatment, _minHealth, _maxHealth);
+            HealthChanged?.Invoke(_health);
+        }
     }
 }

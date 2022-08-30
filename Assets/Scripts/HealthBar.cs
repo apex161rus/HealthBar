@@ -29,10 +29,10 @@ public class HealthBar : MonoBehaviour
     private void OnHealthChanged(float valume)
     {
         CheckForStopAttempt(_coroutine);
-        _coroutine = StartCoroutine(RenameValue(valume));
+        _coroutine = StartCoroutine(ChangeValue(valume));
     }
 
-    private IEnumerator RenameValue(float valume)
+    private IEnumerator ChangeValue(float valume)
     {
         while (_slider.value != valume)
         {
